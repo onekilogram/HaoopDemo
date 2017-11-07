@@ -1,4 +1,4 @@
-package org.hit.kg;
+package org.hit.kg.wordcount;
 
 import java.io.IOException;
 import org.apache.hadoop.conf.Configuration;
