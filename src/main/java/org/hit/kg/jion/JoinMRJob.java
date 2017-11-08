@@ -19,7 +19,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
-import org.apress.prohadoop.utils.AirlineDataUtils;
+import org.hit.kg.utils.AirlineDataUtils;
 
 public class JoinMRJob extends Configured implements Tool {
     public static class FlightDataMapper extends
