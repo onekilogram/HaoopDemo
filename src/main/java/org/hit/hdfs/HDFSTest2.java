@@ -50,17 +50,17 @@ public class HDFSTest2 {
 		 * is.readFully(0, buffer); is.close(); fs.close(); return buffer;
 		 */
 
-		 FileStatus[] files = listStatus(job);
-		
-		 // Save the number of input files for metrics/loadgen
-		 job.setLong(NUM_INPUT_FILES, files.length);
-		 long totalSize = 0; // compute total size
-		 for (FileStatus file: files) { // check we have valid files
-		 if (file.isDirectory()) {
-		 throw new IOException("Not a file: "+ file.getPath());
-		 }
-		 totalSize += file.getLen();
-		 }
+		// FileStatus[] files = listStatus(job);
+		//
+		// // Save the number of input files for metrics/loadgen
+		// job.setLong(NUM_INPUT_FILES, files.length);
+		// long totalSize = 0; // compute total size
+		// for (FileStatus file: files) { // check we have valid files
+		// if (file.isDirectory()) {
+		// throw new IOException("Not a file: "+ file.getPath());
+		// }
+		// totalSize += file.getLen();
+		// }
 
 		BlockLocation[] blkLocations;
 		FileStatus file1 = null ;
