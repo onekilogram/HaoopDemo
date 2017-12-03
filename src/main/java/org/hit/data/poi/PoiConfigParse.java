@@ -1,4 +1,4 @@
-package org.hit.data.utils;
+package org.hit.data.poi;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,40 +12,38 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-import org.hit.data.poi.MyCell;
-import org.hit.data.poi.MySheet;
+import org.hit.data.utils.ComUtil;
 
 /**
- * @ClassName processXmlUtils
- * @Description TODO xml数据转成类信息
- * @author kg
- * @date 2017年12月1日 下午6:53:35
+ * @ClassName PoiConfigParse 
+ * @Description 读取XML配置信息
+ * @author kg 
+ * @date   2017年12月2日 下午10:24:03
  */
-public class processXmlUtils {
+public class PoiConfigParse {
 
 	private static Log log = LogFactory.getLog("service.log");
-	
 	private Document document;
 	private String cfgPath;
-
-	public processXmlUtils(){
-		this.cfgPath = "/config.xml";
+	
+	public PoiConfigParse(){
+		this.cfgPath = "/poi-config.xml";
 	}
-
-	public processXmlUtils(String cfgPath){
+	
+	public PoiConfigParse(String cfgPath){
 		if(!ComUtil.isNull(cfgPath)){
 			this.cfgPath = cfgPath;
 		}else{
-			this.cfgPath = "/config.xml";
+			this.cfgPath = "/poi-config.xml";
 		}
 	}
-
-	// 根据文件名获取对应文件中的excel配置解析模版
-	// 返回该文件下表的所有信息
+	
+	//根据文件名获取对应文件中的excel配置解析模版
+	//返回该文件下表的所有信息
 	@SuppressWarnings("unchecked")
-	public Map<String, MySheet> getConfigByName(String fileName) {
-		Map<String, MySheet> sheetMap = new HashMap<String, MySheet>();
-
+	public Map<String,MySheet> getConfigByName(String fileName){
+		Map<String,MySheet> sheetMap = new HashMap<String,MySheet>();
+		
 		SAXReader saxReader = new SAXReader();
 		saxReader.setEncoding("UTF-8");
 		try {
@@ -53,68 +51,73 @@ public class processXmlUtils {
 			document = saxReader.read(is);
 			is.close();
 		} catch (DocumentException e) {
-			log.error("加载xml配置文件" + cfgPath + "失败：", e);
+			log.error("加载xml配置文件" + cfgPath + "失败：",e);
 			return null;
 		} catch (IOException e) {
-			log.error("打开xml配置文件" + cfgPath + "失败：", e);
+			log.error("打开xml配置文件" + cfgPath + "失败：",e);
 			return null;
 		}
-
-		// 开始解析
+		
+		//开始解析
 		Element root = document.getRootElement();
-		// 获取文件列表
+		//获取文件列表
 		List<Element> fileList = root.elements("file");
-		for (Element file : fileList) {
-			if (file.attributeValue("name").equals(fileName)) { // 这一个直接过滤很多目录，必须和cfgPath配置文件的name一致
+		for(Element file:fileList){
+			if(file.attributeValue("name").equals(fileName)){ //这一个直接过滤很多目录，必须和cfgPath配置文件的name一致
+				//获取所需文件的表列表
 				List<Element> sheetList = file.elements("sheet");
-				for (Element sheet : sheetList) {
-					MySheet sheetInfo = new MySheet();
+				for(Element sheet:sheetList){
+					MySheet sheetInfo  = new MySheet();
 					List<Element> cellList = sheet.elements("cell");
-					Map<String, MyCell> cellMap = new HashMap<String, MyCell>();
-					for (Element cell : cellList) {
+					//获取cell模版
+					Map<String,MyCell> cellMap = new HashMap<String,MyCell>();
+					for(Element cell:cellList){
 						Element column = cell.element("column");
 						MyCell cellInfo = new MyCell();
 						cellInfo.setHeaderName(cell.attributeValue("name"));
 						cellInfo.setCellName(column.attributeValue("name"));
-						try {
+						try{
 							cellInfo.setCol(Integer.parseInt(cell.attributeValue("colnum")));
-						} catch (Exception e) {
+						}catch(Exception e){
 							cellInfo.setCol(-1);
 						}
 						cellInfo.setColumnType(column.attributeValue("datatype"));
-
-						cellMap.put(cell.attributeValue("colnum"), cellInfo);
+						
+						//加入cellMap中 键值为colnum
+						cellMap.put(cell.attributeValue("colnum"), cellInfo);	
 					}
 					sheetInfo.setSheetName(sheet.attributeValue("name"));
-					try {
+					try{
 						sheetInfo.setSheetIndex(Integer.parseInt(sheet.attributeValue("index")));
-					} catch (Exception e) {
+					}catch(Exception e){
 						sheetInfo.setSheetIndex(0);
 					}
-					try {
+					try{
 						sheetInfo.setSkipCol(Integer.parseInt(sheet.attributeValue("skipcol")));
-					} catch (Exception e) {
+					}catch(Exception e){
 						sheetInfo.setSkipCol(0);
 					}
-					try {
+					try{
 						sheetInfo.setSkipRow(Integer.parseInt(sheet.attributeValue("skiprow")));
-					} catch (Exception e) {
+					}catch(Exception e){
 						sheetInfo.setSkipRow(1);
 					}
 					sheetInfo.setIsUsed(sheet.attributeValue("isused"));
 					sheetInfo.setTableName(sheet.attributeValue("table"));
-					sheetInfo.setCell(new HashMap<String, MyCell>(cellMap));
+					sheetInfo.setCell(new HashMap<String,MyCell>(cellMap));
+					//加入sheetMap中 键值为sheetIndex
 					sheetMap.put(sheet.attributeValue("index"), sheetInfo);
 				}
 			}
 		}
 		return sheetMap;
 	}
-
-
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		PoiConfigParse pfParse = new PoiConfigParse();
+		
+		Map<String,MySheet> sMap = pfParse.getConfigByName("测试模版.xlsx");
+		System.out.println(sMap.size());
 	}
-
 }
