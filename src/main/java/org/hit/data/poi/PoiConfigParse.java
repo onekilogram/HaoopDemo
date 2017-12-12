@@ -18,7 +18,7 @@ import org.hit.data.utils.ComUtil;
  * @ClassName PoiConfigParse 
  * @Description 读取XML配置信息
  * @author kg 
- * @date   2017年12月2日 下午10:24:03
+ * @date   2017年12月5日 下午10:24:03
  */
 public class PoiConfigParse {
 
@@ -38,7 +38,6 @@ public class PoiConfigParse {
 		}
 	}
 	
-	//根据文件名获取对应文件中的excel配置解析模版
 	//返回该文件下表的所有信息
 	@SuppressWarnings("unchecked")
 	public Map<String,MySheet> getConfigByName(String fileName){

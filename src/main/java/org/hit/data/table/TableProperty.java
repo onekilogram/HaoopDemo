@@ -3,13 +3,13 @@ package org.hit.data.table;
  * @ClassName TableProperty 
  * @Description 表的属性 ,仿照mysql数据库
  * @author kg 
- * @date   2017年12月1日 下午5:34:45
  */
 
 
 public class TableProperty {
 	private String name;
-	private TablePropertyType type;
+	private String type;
+	
 	private int length;
 	private int decimalPoint;
 	private boolean isNull;
@@ -25,11 +25,11 @@ public class TableProperty {
 		this.name = name;
 	}
 
-	public TablePropertyType getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(TablePropertyType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 

@@ -5,13 +5,13 @@ import java.util.Map;
 
 public class MySheet {
 
-	private String sheetName;		//excel表名
-	private String tableName;		//映射数据库表名
-	private int sheetIndex;			//excel表序
-	private int skipRow;			//起始行号
-	private int skipCol;			//起始列号
-	private String isUsed;			//是否使用
-	private Map<String,MyCell> cell;//数据单元格模版
+	private String sheetName;		
+	private String tableName;		
+	private int sheetIndex;			
+	private int skipRow;			
+	private int skipCol;			
+	private String isUsed;			
+	private Map<String,MyCell> cell;
 	
 	public MySheet(){
 		this.sheetIndex = 0;
