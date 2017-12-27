@@ -1,5 +1,6 @@
 package org.hit.data.table;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,14 +16,17 @@ public class Table {
 	
 	public Table(Field [] fields){
 		this.fields = fields;
+		fieldsList=new ArrayList<>();
 		this.fieldsList=Arrays.asList(fields); 
 	}
 	public Table(List<Field> fieldsList){
 		this.fieldsList = fieldsList;
+		this.fields = new Field[fieldsList.size()];
 		fieldsList.toArray(this.fields);
 	}
 	public Table(Field [] fields,List<Field> fieldsList){
 		this.fields = fields;
+		
 		this.fieldsList = fieldsList;
 	}
 	

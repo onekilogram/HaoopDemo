@@ -7,7 +7,7 @@ package org.hit.data.table;
  */
 public enum FieldType {
 
-	INTEGER("INTEGER"), INT("INT"), VARCHAR("VARCHAR"), DATATIME("DATATIME");
+	INTEGER("INTEGER"), INT("INT"), VARCHAR("VARCHAR"), STRING("STRING"), DATATIME("DATATIME");
 
 	private String name;
 
@@ -26,6 +26,8 @@ public enum FieldType {
 		System.out.println(FieldType.valueOf("INTEGER"));
 		
 		FieldType type = FieldType.valueOf("INTEGER");
+		
+		
 	}
 	
 	//TypeUtils.TYPE fieldType = TypeUtils.TYPE.valueOf(columnInfo[1].trim().toUpperCase());

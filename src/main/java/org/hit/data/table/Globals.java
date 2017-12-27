@@ -15,14 +15,14 @@ public class Globals {
 														// averageLength is 5
 	public static int RandomText_averageLength = 20;
 
-	static Map<String, TableInfo> tableInfos = new HashMap<String, TableInfo>();
+	public static Map<String, TableInfo> tableInfoMap = new HashMap<String, TableInfo>();
 
 	public static TableInfo getTableInfo(String tableName) {
-		return tableInfos.get(tableName);
+		return tableInfoMap.get(tableName);
 	}
 
 	public static void addTableInfo(TableInfo tableInfo) {
-		tableInfos.put(tableInfo.tableName, tableInfo);
+		tableInfoMap.put(tableInfo.tableName, tableInfo);
 	}
 
 	public static void main(String[] args) {
