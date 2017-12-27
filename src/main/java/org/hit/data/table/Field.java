@@ -1,20 +1,22 @@
 package org.hit.data.table;
+
 /**
- * @ClassName TableProperty 
+ * @ClassName TableProperty
  * @Description 表的属性 ,仿照mysql数据库
- * @author kg 
+ * @author kg
  */
 
+public class Field {
 
-public class TableProperty {
 	private String name;
 	private String type;
-	
+
+	private FieldType tablePropertyType;
 	private int length;
 	private int decimalPoint;
 	private boolean isNull;
 	private boolean isPrimaryKey;
-	
+
 	private boolean isForeignKey;
 
 	public String getName() {
@@ -71,5 +73,20 @@ public class TableProperty {
 
 	public void setForeignKey(boolean isForeignKey) {
 		this.isForeignKey = isForeignKey;
+	}
+
+	public FieldType getTablePropertyType() {
+		return tablePropertyType;
+	}
+
+	public void setTablePropertyType(FieldType tablePropertyType) {
+		this.tablePropertyType = tablePropertyType;
+	}
+
+	@Override
+	public String toString() {
+		return "Field [name=" + name + ", type=" + type + ", tablePropertyType=" + tablePropertyType
+				+ ", length=" + length + ", decimalPoint=" + decimalPoint + ", isNull=" + isNull
+				+ ", isPrimaryKey=" + isPrimaryKey + ", isForeignKey=" + isForeignKey + "]";
 	}
 }
