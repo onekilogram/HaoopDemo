@@ -4,7 +4,6 @@ package org.hit.data.table;
  * @ClassName FieldType
  * @Description TODO 枚举类型，表示属性的类型，比如varchar,int
  * @author kg
- * @date 2017年12月3日 下午10:12:22
  */
 public enum FieldType {
 
