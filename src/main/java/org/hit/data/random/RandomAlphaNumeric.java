@@ -23,7 +23,7 @@ public class RandomAlphaNumeric
 
     public RandomAlphaNumeric(long seed)
     {
-        this(seed,Globals.AlphaNumeric_averageLength, 1);
+        this(seed,Globals.String_averageLength, 1);
     }
     
     public RandomAlphaNumeric(long seed, int averageLength)
@@ -47,7 +47,7 @@ public class RandomAlphaNumeric
             if (i % 5 == 0) {
                 charIndex = nextInt(0, Integer.MAX_VALUE);
             }
-            buffer[i] = ALPHA_NUMERIC[(int) (charIndex & 0x3f)];
+            buffer[i] = ALPHA_NUMERIC[(int) (charIndex & 0x3f)];//与63相与
             charIndex >>= 6;
         }
 

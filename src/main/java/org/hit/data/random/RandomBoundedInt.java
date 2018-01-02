@@ -6,7 +6,7 @@ package org.hit.data.random;
  * @author kg
  * @date 2017年12月27日 下午4:07:04
  */
-public class RandomBoundedInt extends AbstractRandomInt {
+public class RandomBoundedInt extends AbstractRandomInt<Integer> {
 	private final int lowValue;
 	private final int highValue;
 
@@ -20,7 +20,7 @@ public class RandomBoundedInt extends AbstractRandomInt {
 		this.highValue = highValue;
 	}
 
-	public int nextValue() {
+	public Integer nextValue() {
 		return nextInt(lowValue, highValue);
 	}
 

@@ -1,7 +1,7 @@
 package org.hit.data.random;
 import static com.google.common.base.Preconditions.checkState;
 
-public abstract class AbstractRandomInt
+public abstract class AbstractRandomInt<T>
 {
     private static final long MULTIPLIER = 16807;//乘数  7^5 
     private static final long MODULUS = 2147483647;//模数  2^31 - 1
@@ -24,7 +24,7 @@ public abstract class AbstractRandomInt
     /**
      * Get a random value between lowValue (inclusive) and highValue (inclusive).
      */
-    protected int nextInt(int lowValue, int highValue)
+    public Integer nextInt(int lowValue, int highValue)
     {
         nextRand();//更新seed
 
@@ -90,4 +90,10 @@ public abstract class AbstractRandomInt
             multiplier = (multiplier * multiplier) % MODULUS;
         }
     }
+    public abstract T nextValue();
+
+//	public Integer nextValue(int lowValue, int highValue) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }

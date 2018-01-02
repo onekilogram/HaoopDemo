@@ -1,5 +1,7 @@
 package org.hit.data.random;
 
+import org.hit.data.table.Globals;
+
 /**
  * @ClassName RandomInt
  * @Description 动态的调整数据的范围
@@ -11,9 +13,8 @@ public class RandomInt extends AbstractRandomInt {
 		super(seed, expectedUsagePerRow);
 	}
 
-	@Override
-	public int nextInt(int lowValue, int highValue) {
-		return super.nextInt(lowValue, highValue);
+	public Integer nextValue(int lowValue, int highValue) {
+		return nextInt(lowValue, highValue);
 	}
 
 	//
@@ -26,5 +27,13 @@ public class RandomInt extends AbstractRandomInt {
 			System.out.println(count);
 		}
 	}
+
+	public Integer nextValue() {
+		// TODO Auto-generated method stub
+		return  nextInt(1, Globals.maxValue);
+	}
+
+
+
 
 }

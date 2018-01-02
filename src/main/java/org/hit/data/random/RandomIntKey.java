@@ -6,7 +6,7 @@ package org.hit.data.random;
  * @author kg
  */
 
-public class RandomIntKey extends AbstractRandomInt {
+public class RandomIntKey extends AbstractRandomInt<Integer> {
 	
 	public int startIndex;
 	
@@ -20,12 +20,11 @@ public class RandomIntKey extends AbstractRandomInt {
 	}
 	
 
-	@Override
-	public int nextInt(int lowValue, int highValue) {
+	public int nextValue(int lowValue, int highValue) {
 		return super.nextInt(lowValue, highValue);
 	}
 
-	public int nextInt() {
+	public Integer nextValue() {
 		return startIndex++;
 	}
 	

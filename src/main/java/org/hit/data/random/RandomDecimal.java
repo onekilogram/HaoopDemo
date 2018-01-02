@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * @date   2017年12月27日 下午4:07:04
  */
 public class RandomDecimal
-        extends AbstractRandomInt
+        extends AbstractRandomInt<String>
 {
     private final int lowValue;
     private final int highValue;
@@ -32,9 +32,9 @@ public class RandomDecimal
         this.decimalPoint = decimalPoint;
     }
 
-    public int nextValue()
+    public String nextValue()
     {
-        return nextInt(lowValue, highValue);
+        return formatValue(nextInt(lowValue, highValue));
     }
     
     public String nextValueToString(){

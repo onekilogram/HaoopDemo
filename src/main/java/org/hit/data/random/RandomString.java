@@ -3,7 +3,7 @@ package org.hit.data.random;
 import org.hit.data.text.Distribution;
 
 public class RandomString
-        extends RandomInt
+        extends AbstractRandomInt<String>
 {
     private final Distribution distribution;
 
@@ -20,6 +20,6 @@ public class RandomString
 
     public String nextValue()
     {
-        return distribution.randomValue(this);
+        return distribution.randomValue(new RandomInt(System.currentTimeMillis(), 3));
     }
 }
