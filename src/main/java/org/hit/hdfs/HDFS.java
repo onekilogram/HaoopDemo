@@ -15,7 +15,7 @@ import org.apache.hadoop.hdfs.protocol.DatanodeInfo;
 import org.apache.hadoop.hdfs.server.blockmanagement.BlockPlacementPolicy;
 import org.apache.hadoop.hdfs.server.datanode.DataNode;
 
-public class HdfsTest {
+public class HDFS {
 
 	private static Configuration conf;
 	private final static int NUM_DATA_NODES = 10;

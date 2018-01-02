@@ -15,7 +15,7 @@ import org.apache.hadoop.fs.LocatedFileStatus;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IOUtils;
 
-public class HDFSTest2 {
+public class HDFSput {
 
 	// 在指定位置新建一个文件，并写入字符
 	public static void WriteToHDFS(String file, String words)
