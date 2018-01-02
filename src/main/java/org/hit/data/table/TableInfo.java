@@ -20,7 +20,7 @@ public class TableInfo {
 	public Table table;
 
 	public TableInfo(String tableName) {
-		this(tableName, 0, '|', null);
+		this(tableName, 100, '|', null);
 	}
 
 	public TableInfo(String tableName, double numTuples, Table table) {

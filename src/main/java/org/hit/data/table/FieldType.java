@@ -7,7 +7,7 @@ package org.hit.data.table;
  */
 public enum FieldType {
 
-	INTEGER("INTEGER"), INT("INT"), VARCHAR("VARCHAR"), STRING("STRING"), DATATIME("DATATIME");
+	INTEGER("INTEGER"), INT("INT"), VARCHAR("VARCHAR"), STRING("STRING"), DATATIME("DATATIME"),DOUBLE("DOUBLE");
 
 	private String name;
 
